@@ -1,0 +1,20 @@
+<h1>New Inspection</h1>
+<%= form_with model: @inspection, url: hive_inspections_path(@hive) do |form| %>
+  <%= form.radio_button :population_size, "critical" %>
+  <%= form.label :population_size_critical, "Critical" %>
+
+  <%= form.radio_button :population_size, "small" %>
+  <%= form.label :population_size_small, "Small" %>
+
+  <%= form.radio_button :population_size, "medium" %>
+  <%= form.label :population_size_medium, "Medium" %>
+
+  <%= form.radio_button :population_size, "large" %>
+  <%= form.label :population_size_large, "Large" %>
+
+  <% @inspection.errors.full_messages_for(:population_size).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+
+  <%= form.submit %>
+<% end %>

@@ -1,1 +1,7 @@
 <h3><%= @hive.name %> </h3>
+
+<%= link_to "Add Inspection", new_hive_inspection_path(@hive) %>
+
+<% @inspections.each do |inspection| %>
+  <p>Population size: <%= inspection.population_size %></p>
+<% end %>
