@@ -1,3 +1,16 @@
-<% @hives.each do |hive| %>
-  <%= link_to hive.name, hive_path(hive) %>
-<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Hive Name</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @hives.each do |hive| %>
+      <tr>
+        <td><%= link_to hive.name, hive_path(hive) %></td>
+        <td>---</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
