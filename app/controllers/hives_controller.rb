@@ -11,6 +11,7 @@ class HivesController < ApplicationController
 
   def new
     @hive = Hive.new
+    @address = @hive.addresses.new
   end
 
   def create
@@ -26,6 +27,6 @@ class HivesController < ApplicationController
   private
 
   def hive_params
-    params.require(:hive).permit(:name)
+    params.require(:hive).permit(:name, addresses_attributes: [ :id, :street, :street2, :city, :state, :zip_code ])
   end
 end

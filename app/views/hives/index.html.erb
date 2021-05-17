@@ -11,7 +11,7 @@
     <% @hives.each do |hive| %>
       <tr>
         <td><%= link_to hive.name, hive_path(hive) %></td>
-        <td>---</td>
+        <td><%= hive.addresses.first.try(:street) %></td>
       </tr>
     <% end %>
   </tbody>
