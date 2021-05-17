@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+.grid-container {
+ padding-top: .9375rem;
+}
+
+#clearance {
+  text-align: center;
+}
