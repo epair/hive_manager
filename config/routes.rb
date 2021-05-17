@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'hives#index'
   constraints Clearance::Constraints::SignedIn.new do
-    root to: 'hives#index'
     resources :hives do
       resources :inspections
     end

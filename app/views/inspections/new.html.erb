@@ -1,5 +1,7 @@
 <h1>New Inspection</h1>
 <%= form_with model: @inspection, url: hive_inspections_path(@hive) do |form| %>
+  <%= form.date_field :date %>
+
   <%= form.radio_button :population_size, "critical" %>
   <%= form.label :population_size_critical, "Critical" %>
 
