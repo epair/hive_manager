@@ -5,6 +5,7 @@
     <tr>
       <th>Hive Name</th>
       <th>Address</th>
+      <th>Population Size</th>
     </tr>
   </thead>
   <tbody>
@@ -12,6 +13,7 @@
       <tr>
         <td><%= link_to hive.name, hive_path(hive) %></td>
         <td><%= hive.addresses.first.try(:street) %></td>
+        <td><%= hive.population_size %></td>
       </tr>
     <% end %>
   </tbody>
