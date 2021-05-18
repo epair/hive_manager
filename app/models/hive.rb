@@ -10,4 +10,8 @@ class Hive < ApplicationRecord
   def population_size
     inspections.last.try(:population_size)
   end
+
+  def current_address
+    addresses.last
+  end
 end

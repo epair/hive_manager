@@ -1,6 +1,16 @@
 <h3><%= @hive.name %> </h3>
 
-<%= link_to "Add Inspection", new_hive_inspection_path(@hive) %>
+<% if @hive.current_address %>
+  <div class="callout">
+    <%= @hive.current_address.street %><br>
+    <% unless @hive.current_address.street2.blank? %>
+      <%= @hive.current_address.street2 %><br>
+    <% end %>
+    <%= @hive.current_address.line3 %>
+  </div>
+<% end %>
+
+<%= link_to "Add Inspection", new_hive_inspection_path(@hive), class: "button", style: "float: right;" %>
 
 <table>
   <thead>
@@ -12,7 +22,7 @@
   <tbody>
     <% @inspections.each do |inspection| %>
       <tr>
-        <td><%= link_to inspection.date, hive_inspection_path(inspection) %></td>
+        <td><%= inspection.date %></td>
         <td><%= inspection.population_size %></td>
       </tr>
     <% end %>
