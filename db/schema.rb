@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_18_015052) do
+ActiveRecord::Schema.define(version: 2021_05_18_172626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,15 +26,6 @@ ActiveRecord::Schema.define(version: 2021_05_18_015052) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
-  end
-
-  create_table "checks", force: :cascade do |t|
-    t.bigint "queen_id", null: false
-    t.date "date", null: false
-    t.integer "status", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["queen_id"], name: "index_checks_on_queen_id"
   end
 
   create_table "hive_queens", force: :cascade do |t|
@@ -61,6 +52,7 @@ ActiveRecord::Schema.define(version: 2021_05_18_015052) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.date "date"
+    t.integer "queen_status"
     t.index ["hive_id"], name: "index_inspections_on_hive_id"
   end
 
@@ -80,7 +72,6 @@ ActiveRecord::Schema.define(version: 2021_05_18_015052) do
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
-  add_foreign_key "checks", "queens"
   add_foreign_key "hive_queens", "hives"
   add_foreign_key "hive_queens", "queens"
   add_foreign_key "hives", "users"
