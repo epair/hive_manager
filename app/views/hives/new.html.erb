@@ -1,8 +1,8 @@
 <h1>New Hive</h1>
 
-<%= form_with model: @hive do |form| %>
+<%= form_with model: @hive, 'data-abide': true, novalidate: true do |form| %>
   <%= form.label :name %>
-  <%= form.text_field :name %>
+  <%= form.text_field :name, required: true %>
   <%= form.fields_for :addresses, @address do |addresses_form| %>
     <%= addresses_form.label :street %>
     <%= addresses_form.text_field :street %>
@@ -29,10 +29,6 @@
       <%= queens_form.select :breed, [["One", "one"], ["Two", "two"], ["Three", "three"]], { include_blank: '-- Select One --' } %>
     <% end %>
   </div>
-
-  <% @hive.errors.full_messages_for(:name).each do |message| %>
-    <div><%= message %></div>
-  <% end %>
 
   <%= form.submit "Create Hive", class: "button", style: "float: right;" %>
 <% end %>

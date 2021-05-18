@@ -25,6 +25,10 @@
   display: grid;
 }
 
+/* #flash {
+  display: none;
+} */
+
 #clearance {
   text-align: center;
 }

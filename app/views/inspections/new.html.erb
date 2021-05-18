@@ -1,10 +1,10 @@
 <h1>New Inspection</h1>
-<%= form_with model: @inspection, url: hive_inspections_path(@hive) do |form| %>
+<%= form_with model: @inspection, url: hive_inspections_path(@hive), 'data-abide': true, novalidate: true do |form| %>
   <div class="grid-x grid-padding-x">
     <div class="large-6 cell">
       <label>
         Inspection Date
-        <%= form.date_field :date %>
+        <%= form.date_field :date, required: true %>
       </label>
     </div>
 
@@ -18,10 +18,10 @@
   <div class="grid-x grid-padding-x">
     <fieldset class="large-6 cell">
       <legend>Population Size</legend>
-      <%= form.radio_button :population_size, "critical" %>
+      <%= form.radio_button :population_size, "critical"%>
       <%= form.label :population_size_critical, "Critical" %>
 
-      <%= form.radio_button :population_size, "small" %>
+      <%= form.radio_button :population_size, "small", required: true %>
       <%= form.label :population_size_small, "Small" %>
 
       <%= form.radio_button :population_size, "medium" %>
@@ -31,10 +31,6 @@
       <%= form.label :population_size_large, "Large" %>
     </fieldset>
   </div>
-
-  <% @inspection.errors.full_messages_for(:population_size).each do |message| %>
-    <div><%= message %></div>
-  <% end %>
 
   <%= form.submit "Create Inspection", class: "button", style: "float: right;" %>
 <% end %>
