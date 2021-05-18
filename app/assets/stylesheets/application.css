@@ -17,6 +17,14 @@
  padding-top: .9375rem;
 }
 
+.hidden {
+  display: none;
+}
+
+.show {
+  display: grid;
+}
+
 #clearance {
   text-align: center;
 }

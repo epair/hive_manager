@@ -3,7 +3,7 @@
 <%= form_with model: @hive do |form| %>
   <%= form.label :name %>
   <%= form.text_field :name %>
-  <%= form.fields_for :addresses do |addresses_form| %>
+  <%= form.fields_for :addresses, @address do |addresses_form| %>
     <%= addresses_form.label :street %>
     <%= addresses_form.text_field :street %>
 
@@ -19,6 +19,16 @@
     <%= addresses_form.label :zip_code %>
     <%= addresses_form.text_field :zip_code %>
   <% end %>
+
+  <%= form.check_box :installed_colony, 'data-toggle': "hive-queen-form" %>
+  <%= form.label :installed_colony, "Installed colony already?" %>
+
+  <div class="hidden" id="hive-queen-form" data-toggler=".show">
+    <%= form.fields_for :queen, @queen do |queens_form| %>
+      <%= queens_form.label :breed, "Queen Breed" %>
+      <%= queens_form.select :breed, [["One", "one"], ["Two", "two"], ["Three", "three"]], { include_blank: '-- Select One --' } %>
+    <% end %>
+  </div>
 
   <% @hive.errors.full_messages_for(:name).each do |message| %>
     <div><%= message %></div>
