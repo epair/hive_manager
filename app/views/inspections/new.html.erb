@@ -9,23 +9,28 @@
     </div>
 
     <div class="large-6 cell">
-      <fieldset class="fieldset">
-        <legend>Population Size</legend>
-        <%= form.radio_button :population_size, "critical" %>
-        <%= form.label :population_size_critical, "Critical" %>
-
-        <%= form.radio_button :population_size, "small" %>
-        <%= form.label :population_size_small, "Small" %>
-
-        <%= form.radio_button :population_size, "medium" %>
-        <%= form.label :population_size_medium, "Medium" %>
-
-        <%= form.radio_button :population_size, "large" %>
-        <%= form.label :population_size_large, "Large" %>
-      </fieldset>
+      <label>Queen Status
+        <%= form.select :city, ["Right", "Laying Workers", "Caged", "Virgin"], { include_blank: '-- Select One --' }, required: true %>
+      </label>
     </div>
   </div>
 
+  <div class="grid-x grid-padding-x">
+    <fieldset class="large-6 cell">
+      <legend>Population Size</legend>
+      <%= form.radio_button :population_size, "critical" %>
+      <%= form.label :population_size_critical, "Critical" %>
+
+      <%= form.radio_button :population_size, "small" %>
+      <%= form.label :population_size_small, "Small" %>
+
+      <%= form.radio_button :population_size, "medium" %>
+      <%= form.label :population_size_medium, "Medium" %>
+
+      <%= form.radio_button :population_size, "large" %>
+      <%= form.label :population_size_large, "Large" %>
+    </fieldset>
+  </div>
 
   <% @inspection.errors.full_messages_for(:population_size).each do |message| %>
     <div><%= message %></div>
