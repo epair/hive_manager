@@ -10,7 +10,7 @@ RSpec.feature "Visitor signs up" do
     expect(current_path).to eq sign_up_path
   end
 
-  scenario "with valid email and password" do
+  scenario "with valid email and password", js: true do
     sign_up_with "valid@example.com", "password"
 
     expect_user_to_be_signed_in

@@ -14,9 +14,11 @@ RSpec.feature "Create Hive" do
     expect(page).to have_content('Hive 1')
   end
 
-  scenario "invalid inputs" do
+  scenario "invalid inputs", js: true do
     click_on 'Create Hive'
 
-    expect(page).to have_content("Name can't be blank")
+    # foundation-abide plugin is doing form validation & not available in html
+    # checking to make sure path doesn't change
+    expect(current_path).to eq(new_hive_path)
   end
 end

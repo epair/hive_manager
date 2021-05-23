@@ -8,18 +8,15 @@ RSpec.feature "Create Inspection" do
     visit hive_path(hive, as: user)
   end
 
-  scenario "valid inputs" do
+  scenario "valid inputs", js: true do
     click_on 'Add Inspection'
+    fill_in 'Inspection Date', with: '01/01/2021'
+    select('Right', from: 'Queen Status')
     choose('Small')
     click_on 'Create Inspection'
 
-    expect(page).to have_content('Population size: small')
-  end
-
-  xscenario "invalid inputs" do
-    click_on 'Add Inspection'
-    click_on 'Create Inspection'
-
-    expect(page).to have_content("Population size can't be blank")
+    expect(page).to have_content('small')
+    expect(page).to have_content('2021-01-01')
+    expect(page).to have_content('right')
   end
 end

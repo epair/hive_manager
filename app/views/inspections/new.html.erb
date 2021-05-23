@@ -10,7 +10,7 @@
 
     <div class="large-6 cell">
       <label>Queen Status
-        <%= form.select :queen_status, ["Right", "Laying Workers", "Caged", "Virgin"], { include_blank: '-- Select One --' }, required: true %>
+        <%= form.select :queen_status, [["Right", "right"], ["Laying Workers", "laying_workers"], ["Caged", "caged"], ["Virgin", "virgin"]], { include_blank: '-- Select One --' }, required: true %>
       </label>
     </div>
   </div>
