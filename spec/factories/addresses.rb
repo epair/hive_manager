@@ -5,5 +5,6 @@ FactoryBot.define do
     city { "MyString" }
     state { "MyString" }
     zip_code { "MyString" }
+    association :addressable, factory: :hive
   end
 end

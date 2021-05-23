@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :hive do
-    user { nil }
+    user
     name { "MyString" }
   end
 end
