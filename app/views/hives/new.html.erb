@@ -26,7 +26,13 @@
   <div class="hidden" id="hive-queen-form" data-toggler=".show">
     <%= form.fields_for :queen, @queen do |queens_form| %>
       <%= queens_form.label :breed, "Queen Breed" %>
-      <%= queens_form.select :breed, [["One", "one"], ["Two", "two"], ["Three", "three"]], { include_blank: '-- Select One --' } %>
+      <%= queens_form.select :breed, 
+        [["Italian", "italian"], 
+         ["Russian", "russian"], 
+         ["Carniolan", "carniolan"], 
+         ["Saskatraz", "saskatraz"], 
+         ["Home Grown", "home_grown"]
+        ], { include_blank: '-- Select One --' } %>
     <% end %>
   </div>
 
