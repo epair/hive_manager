@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+gem 'webdrivers', '~> 4.0', require: false
+
 group :test do
   gem 'rexml'
   gem 'selenium-webdriver'
