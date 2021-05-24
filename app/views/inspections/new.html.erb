@@ -29,5 +29,16 @@
     </fieldset>
   </div>
 
+  <div class="grid-x grid-padding-x">
+    <fieldset class="large-6 cell">
+      <legend>Condition</legend>
+      <%= form.radio_button :condition, "healthy"%>
+      <%= form.label :condition_healthy, "Healthy" %>
+
+      <%= form.radio_button :condition, "needs_attention" %>
+      <%= form.label :condition_needs_attention, "Needs Attention" %>
+    </fieldset>
+  </div>
+
   <%= form.submit "Create Inspection", class: "button", style: "float: right;" %>
 <% end %>
