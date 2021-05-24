@@ -17,18 +17,15 @@
 
   <div class="grid-x grid-padding-x">
     <fieldset class="large-6 cell">
-      <legend>Population Size</legend>
-      <%= form.radio_button :population_size, "critical"%>
-      <%= form.label :population_size_critical, "Critical" %>
+      <legend>Honey Stores</legend>
+      <%= form.radio_button :honey_stores, "low"%>
+      <%= form.label :honey_stores_low, "Low" %>
 
-      <%= form.radio_button :population_size, "small", required: true %>
-      <%= form.label :population_size_small, "Small" %>
+      <%= form.radio_button :honey_stores, "moderate" %>
+      <%= form.label :honey_stores_moderate, "Moderate" %>
 
-      <%= form.radio_button :population_size, "medium" %>
-      <%= form.label :population_size_medium, "Medium" %>
-
-      <%= form.radio_button :population_size, "large" %>
-      <%= form.label :population_size_large, "Large" %>
+      <%= form.radio_button :honey_stores, "high" %>
+      <%= form.label :honey_stores_high, "High" %>
     </fieldset>
   </div>
 

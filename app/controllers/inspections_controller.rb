@@ -18,6 +18,6 @@ class InspectionsController < ApplicationController
   private
 
   def inspection_params
-    params.require(:inspection).permit(:population_size, :date, :queen_status)
+    params.require(:inspection).permit(:date, :queen_status, :honey_stores)
   end
 end
