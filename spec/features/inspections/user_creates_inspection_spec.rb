@@ -17,7 +17,7 @@ RSpec.feature "Create Inspection" do
     fill_in 'Number of Frames', with: '8'
     check 'Potential Swarm'
     check 'Larvae'
-    check 'Feeder?'
+    check 'Feeder'
     fill_in 'Number of Boxes', with: '3'
     fill_in 'Notes', with: 'Things I need to know for the next inspection'
     click_on 'Create Inspection'

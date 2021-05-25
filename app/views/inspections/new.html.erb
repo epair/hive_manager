@@ -8,26 +8,6 @@
       </label>
     </div>
 
-    <div class="large-6 cell">
-      <label>Queen Status
-        <%= form.select :queen_status, [["Right", "right"], ["Laying Workers", "laying_workers"], ["Caged", "caged"], ["Virgin", "virgin"]], { include_blank: '-- Select One --' }, required: true %>
-      </label>
-    </div>
-  </div>
-
-  <div class="grid-x grid-padding-x">
-    <fieldset class="large-6 cell">
-      <legend>Honey Stores</legend>
-      <%= form.radio_button :honey_stores, "low"%>
-      <%= form.label :honey_stores_low, "Low" %>
-
-      <%= form.radio_button :honey_stores, "moderate" %>
-      <%= form.label :honey_stores_moderate, "Moderate" %>
-
-      <%= form.radio_button :honey_stores, "high" %>
-      <%= form.label :honey_stores_high, "High" %>
-    </fieldset>
-
     <fieldset class="large-6 cell">
       <legend>Condition</legend>
       <%= form.radio_button :condition, "healthy"%>
@@ -40,17 +20,30 @@
 
   <div class="grid-x grid-padding-x">
     <div class="large-6 cell">
+      <label>Queen Status
+        <%= form.select :queen_status, [["Right", "right"], ["Laying Workers", "laying_workers"], ["Caged", "caged"], ["Virgin", "virgin"]], { include_blank: '-- Select One --' }, required: true %>
+      </label>
+    </div>
+
+    <fieldset class="large-6 cell">
+      <legend>Honey Stores</legend>
+      <%= form.radio_button :honey_stores, "low"%>
+      <%= form.label :honey_stores_low, "Low" %>
+
+      <%= form.radio_button :honey_stores, "moderate" %>
+      <%= form.label :honey_stores_moderate, "Moderate" %>
+
+      <%= form.radio_button :honey_stores, "high" %>
+      <%= form.label :honey_stores_high, "High" %>
+    </fieldset>
+  </div>
+
+  <div class="grid-x grid-padding-x">
+    <div class="large-6 cell">
       <%= form.label :number_of_frames, "Number of Frames" %>
       <%= form.number_field :number_of_frames, step: 1.0 %>
     </div>
 
-    <div class="large-6 cell">
-      <%= form.label :potential_swarm, "Potential Swarm" %>
-      <%= form.check_box :potential_swarm %>
-    </div>
-  </div>
-
-  <div class="grid-x grid-padding-x">
     <fieldset class="large-6 cell">
       <legend>Brood Present?</legend>
 
@@ -63,11 +56,6 @@
       <%= form.check_box :capped_brood %>
       <%= form.label :capped_brood, "Capped" %>
     </fieldset>
-
-    <div class="large-6 cell">
-      <%= form.check_box :feeder %>
-      <%= form.label :feeder, "Feeder?" %>
-    </div>
   </div>
 
   <div class="grid-x grid-padding-x">
@@ -76,6 +64,17 @@
       <%= form.number_field :number_of_boxes, in: 1..3 %>
     </div>
 
+    <fieldset class="large-6 cell">
+      <legend>Alerts & Events</legend>
+      <%= form.check_box :potential_swarm %>
+      <%= form.label :potential_swarm, "Potential Swarm" %>
+
+      <%= form.check_box :feeder %>
+      <%= form.label :feeder, "Feeder" %>
+    </fieldset>
+  </div>
+
+  <div class="grid-x grid-padding-x">
     <div class= "large-6 cell">
       <%= form.label :notes, "Notes" %>
       <%= form.text_area :notes %>
