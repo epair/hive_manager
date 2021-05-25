@@ -50,5 +50,20 @@
     </div>
   </div>
 
+  <div class="grid-x grid-padding-x">
+    <fieldset class="large-6 cell">
+      <legend>Brood Present?</legend>
+
+      <%= form.check_box :egg_brood %>
+      <%= form.label :egg_brood, "Eggs" %>
+
+      <%= form.check_box :larvae_brood %>
+      <%= form.label :larvae_brood, "Larvae" %>
+
+      <%= form.check_box :capped_brood %>
+      <%= form.label :capped_brood, "Capped" %>
+    </fieldset>
+  </div>
+
   <%= form.submit "Create Inspection", class: "button", style: "float: right;" %>
 <% end %>

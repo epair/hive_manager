@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_012439) do
+ActiveRecord::Schema.define(version: 2021_05_25_024600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,9 @@ ActiveRecord::Schema.define(version: 2021_05_25_012439) do
     t.integer "condition"
     t.integer "number_of_frames", default: 0, null: false
     t.boolean "potential_swarm", default: false, null: false
+    t.boolean "egg_brood", default: false, null: false
+    t.boolean "larvae_brood", default: false, null: false
+    t.boolean "capped_brood", default: false, null: false
     t.index ["hive_id"], name: "index_inspections_on_hive_id"
   end
 
