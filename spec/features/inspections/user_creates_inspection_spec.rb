@@ -19,6 +19,7 @@ RSpec.feature "Create Inspection" do
     check 'Larvae'
     check 'Feeder?'
     fill_in 'Number of Boxes', with: '3'
+    fill_in 'Notes', with: 'Things I need to know for the next inspection'
     click_on 'Create Inspection'
 
     expect(page).to have_content('2021-01-01')
@@ -30,5 +31,6 @@ RSpec.feature "Create Inspection" do
     expect(page).to have_content('Larvae')
     expect(page).to have_content('Yes')
     expect(page).to have_content('3')
+    expect(page).to have_content('Things I need to know for the next inspection')
   end
 end
