@@ -43,6 +43,11 @@
       <%= form.label :number_of_frames, "Number of Frames" %>
       <%= form.number_field :number_of_frames, step: 1.0 %>
     </div>
+
+    <div class="large-6 cell">
+      <%= form.label :potential_swarm, "Potential Swarm" %>
+      <%= form.check_box :potential_swarm %>
+    </div>
   </div>
 
   <%= form.submit "Create Inspection", class: "button", style: "float: right;" %>

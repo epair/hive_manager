@@ -15,6 +15,7 @@ RSpec.feature "Create Inspection" do
     choose 'Moderate'
     choose 'Healthy'
     fill_in 'Number of Frames', with: '8'
+    check 'Potential Swarm'
     click_on 'Create Inspection'
 
     expect(page).to have_content('2021-01-01')
@@ -22,5 +23,6 @@ RSpec.feature "Create Inspection" do
     expect(page).to have_content('right')
     expect(page).to have_content('healthy')
     expect(page).to have_content('8')
+    expect(page).to have_content('potential swarm')
   end
 end
