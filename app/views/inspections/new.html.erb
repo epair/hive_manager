@@ -27,9 +27,7 @@
       <%= form.radio_button :honey_stores, "high" %>
       <%= form.label :honey_stores_high, "High" %>
     </fieldset>
-  </div>
 
-  <div class="grid-x grid-padding-x">
     <fieldset class="large-6 cell">
       <legend>Condition</legend>
       <%= form.radio_button :condition, "healthy"%>
@@ -38,6 +36,13 @@
       <%= form.radio_button :condition, "needs_attention" %>
       <%= form.label :condition_needs_attention, "Needs Attention" %>
     </fieldset>
+  </div>
+
+  <div class="grid-x grid-padding-x">
+    <div class="large-6 cell">
+      <%= form.label :number_of_frames, "Number of Frames" %>
+      <%= form.number_field :number_of_frames, step: 1.0 %>
+    </div>
   </div>
 
   <%= form.submit "Create Inspection", class: "button", style: "float: right;" %>
