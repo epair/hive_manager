@@ -20,6 +20,7 @@
       <th>Queen Status</th>
       <th>Condition</th>
       <th>Number of Frames</th>
+      <th>Number of Boxes</th>
       <th>Brood Present</th>
       <th>Feeder</th>
       <th>Alerts</th>
@@ -33,6 +34,7 @@
         <td><%= inspection.queen_status %></td>
         <td><%= inspection.condition %></td>
         <td><%= inspection.number_of_frames %></td>
+        <td><%= inspection.number_of_boxes %></td>
         <td><%= inspection.brood.join(", ") %></td>
         <td><%= inspection.feeder ? "Yes" : "No" %></td>
         <td><%= "potential swarm" if inspection.potential_swarm %></td>

@@ -18,6 +18,7 @@ RSpec.feature "Create Inspection" do
     check 'Potential Swarm'
     check 'Larvae'
     check 'Feeder?'
+    fill_in 'Number of Boxes', with: '3'
     click_on 'Create Inspection'
 
     expect(page).to have_content('2021-01-01')
@@ -28,5 +29,6 @@ RSpec.feature "Create Inspection" do
     expect(page).to have_content('potential swarm')
     expect(page).to have_content('Larvae')
     expect(page).to have_content('Yes')
+    expect(page).to have_content('3')
   end
 end

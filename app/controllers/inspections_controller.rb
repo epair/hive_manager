@@ -30,7 +30,8 @@ class InspectionsController < ApplicationController
         :egg_brood,
         :larvae_brood,
         :capped_brood,
-        :feeder
+        :feeder,
+        :number_of_boxes
       )
   end
 end
