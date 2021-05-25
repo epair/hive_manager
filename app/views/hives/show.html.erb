@@ -18,6 +18,13 @@
       <th>Date</th>
       <th>Honey Stores</th>
       <th>Queen Status</th>
+      <th>Condition</th>
+      <th>Number of Frames</th>
+      <th>Number of Boxes</th>
+      <th>Brood Present</th>
+      <th>Feeder</th>
+      <th>Potential Swarm</th>
+      <th>Notes</th>
     </tr>
   </thead>
   <tbody>
@@ -26,6 +33,13 @@
         <td><%= inspection.date %></td>
         <td><%= inspection.honey_stores %></td>
         <td><%= inspection.queen_status %></td>
+        <td><%= inspection.condition %></td>
+        <td><%= inspection.number_of_frames %></td>
+        <td><%= inspection.number_of_boxes %></td>
+        <td><%= inspection.brood.join(", ") %></td>
+        <td><%= inspection.feeder ? "Yes" : "No" %></td>
+        <td><%= inspection.potential_swarm ? "Yes" : "No" %></td>
+        <td><%= inspection.notes %></td>
       </tr>
     <% end %>
   </tbody>

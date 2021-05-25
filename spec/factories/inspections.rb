@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :inspection do
-    hive { nil }
+    hive
     honey_stores { 1 }
   end
 end
