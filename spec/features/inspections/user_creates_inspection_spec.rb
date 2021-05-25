@@ -15,7 +15,6 @@ RSpec.feature "Create Inspection" do
     choose 'Moderate'
     choose 'Healthy'
     fill_in 'Number of Frames', with: '8'
-    check 'Potential Swarm'
     check 'Larvae'
     check 'Feeder'
     fill_in 'Number of Boxes', with: '3'
@@ -27,7 +26,7 @@ RSpec.feature "Create Inspection" do
     expect(page).to have_content('right')
     expect(page).to have_content('healthy')
     expect(page).to have_content('8')
-    expect(page).to have_content('potential swarm')
+    expect(page).to have_content('No') # checks potential swarm column
     expect(page).to have_content('Larvae')
     expect(page).to have_content('Yes')
     expect(page).to have_content('3')

@@ -23,7 +23,7 @@
       <th>Number of Boxes</th>
       <th>Brood Present</th>
       <th>Feeder</th>
-      <th>Alerts</th>
+      <th>Potential Swarm</th>
       <th>Notes</th>
     </tr>
   </thead>
@@ -38,7 +38,7 @@
         <td><%= inspection.number_of_boxes %></td>
         <td><%= inspection.brood.join(", ") %></td>
         <td><%= inspection.feeder ? "Yes" : "No" %></td>
-        <td><%= "potential swarm" if inspection.potential_swarm %></td>
+        <td><%= inspection.potential_swarm ? "Yes" : "No" %></td>
         <td><%= inspection.notes %></td>
       </tr>
     <% end %>
