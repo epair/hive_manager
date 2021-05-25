@@ -1,24 +1,19 @@
-# README
+# Hive Manager
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![Build Status](https://www.travis-ci.com/epair/hive_manager.svg?branch=main)](https://www.travis-ci.com/epair/hive_manager)
+[![Maintainability](https://api.codeclimate.com/v1/badges/2ae1ac5c1974c3866dfe/maintainability)](https://codeclimate.com/github/epair/hive_manager/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/2ae1ac5c1974c3866dfe/test_coverage)](https://codeclimate.com/github/epair/hive_manager/test_coverage)
 
-Things you may want to cover:
+Rails web app for beekeepers to track and manage hives.
 
-* Ruby version
+### Demo
 
-* System dependencies
+[Demo App](https://boiling-hollows-09677.herokuapp.com/)
 
-* Configuration
+### To Do List
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- [ ] Replace tables with react_on_rails table component
+- [ ] Update hive/show page to show last inspection info
+- [ ] Update hive/index page to list hives with all current info
+- [ ] Pre-fill inspection form with previous inspection info
+- [x] Finalize inspection form with all attributes
