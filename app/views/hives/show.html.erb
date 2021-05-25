@@ -21,6 +21,7 @@
       <th>Condition</th>
       <th>Number of Frames</th>
       <th>Brood Present</th>
+      <th>Feeder</th>
       <th>Alerts</th>
     </tr>
   </thead>
@@ -33,6 +34,7 @@
         <td><%= inspection.condition %></td>
         <td><%= inspection.number_of_frames %></td>
         <td><%= inspection.brood.join(", ") %></td>
+        <td><%= inspection.feeder ? "Yes" : "No" %></td>
         <td><%= "potential swarm" if inspection.potential_swarm %></td>
       </tr>
     <% end %>

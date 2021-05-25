@@ -63,6 +63,11 @@
       <%= form.check_box :capped_brood %>
       <%= form.label :capped_brood, "Capped" %>
     </fieldset>
+
+    <div class="large-6 cell">
+      <%= form.check_box :feeder %>
+      <%= form.label :feeder, "Feeder?" %>
+    </div>
   </div>
 
   <%= form.submit "Create Inspection", class: "button", style: "float: right;" %>

@@ -29,7 +29,8 @@ class InspectionsController < ApplicationController
         :potential_swarm,
         :egg_brood,
         :larvae_brood,
-        :capped_brood
+        :capped_brood,
+        :feeder
       )
   end
 end
