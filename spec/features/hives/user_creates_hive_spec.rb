@@ -21,4 +21,22 @@ RSpec.feature "Create Hive" do
     # checking to make sure path doesn't change
     expect(current_path).to eq(new_hive_path)
   end
+
+  context 'with installed colony', js: true do
+    scenario "valid inputs" do
+      fill_in 'Name', with: 'Hive 1'
+      check 'Installed colony already?'
+      select 'Italian', from: 'Queen Breed'
+      click_on 'Create Hive'
+
+      expect(page).to have_content('Hive 1')
+    end
+
+    scenario "invalid inputs" do
+      check 'Installed colony already?'
+      click_on 'Create Hive'
+
+      expect(current_path).to eq(new_hive_path)
+    end
+  end
 end
