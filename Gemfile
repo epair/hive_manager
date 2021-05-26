@@ -31,6 +31,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'webdrivers', '~> 4.0', require: false
 
+gem "react_on_rails", "= 12.0.4"
+
 group :test do
   gem 'rexml'
   gem 'selenium-webdriver'
