@@ -21,24 +21,21 @@ class HivesController < ApplicationController
     if installed_colony?
       @queen = Queen.new(queen_params)
       @hive_queen = @hive.hive_queens.new(queen: @queen, current: true)
-      if @hive.save && @queen.save && @hive_queen.save
-        redirect_to @hive
-      else
-        render :new
-      end
+    end
+
+    if @queen.try(:save) && @hive_queen.try(:save) && @hive.save
+      redirect_to @hive
+    elsif @hive.save
+      redirect_to @hive
     else
-      if @hive.save
-        redirect_to @hive
-      else
-        render :new
-      end
+      render :new
     end
   end
 
   private
 
   def installed_colony?
-    params.require(:hive).permit(:installed_colony)
+    params.require(:hive).permit(:installed_colony)[:installed_colony] == 1
   end
 
   def hive_params
