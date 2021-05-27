@@ -8,7 +8,20 @@ class Hive < ApplicationRecord
 
   validates :name, presence: true
 
+  delegate :queen_status,
+           :honey_stores,
+           :condition,
+           :number_of_frames,
+           :potential_swarm,
+           :brood,
+           :feeder,
+           :number_of_boxes, to: :most_recent_inspection, allow_nil: true
+
   def current_address
     addresses.last
+  end
+
+  def most_recent_inspection
+    inspections.first
   end
 end

@@ -4,6 +4,8 @@ class Inspection < ApplicationRecord
   enum honey_stores: [ :low, :moderate, :high ]
   enum condition: [ :healthy, :needs_attention ]
 
+  default_scope { order(date: :desc) }
+
   def brood
     arr = []
     arr << "Eggs" if egg_brood
