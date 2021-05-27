@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :hive do
     user
-    name { "MyString" }
+    sequence(:name) { |n| "Hive #{n}" }
   end
 end

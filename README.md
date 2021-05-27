@@ -12,8 +12,8 @@ Rails web app for beekeepers to track and manage hives.
 
 ### To Do List
 
-- [ ] Replace tables with react_on_rails table component
 - [ ] Update hive/show page to show last inspection info
-- [ ] Update hive/index page to list hives with all current info
 - [ ] Pre-fill inspection form with previous inspection info
 - [x] Finalize inspection form with all attributes
+- [x] Replace tables with react_on_rails table component
+- [x] Update hive/index page to list hives with all current info

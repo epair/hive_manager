@@ -12,35 +12,5 @@
 
 <%= link_to "Add Inspection", new_hive_inspection_path(@hive), class: "button", style: "float: right;" %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Honey Stores</th>
-      <th>Queen Status</th>
-      <th>Condition</th>
-      <th>Number of Frames</th>
-      <th>Number of Boxes</th>
-      <th>Brood Present</th>
-      <th>Feeder</th>
-      <th>Potential Swarm</th>
-      <th>Notes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @inspections.each do |inspection| %>
-      <tr>
-        <td><%= inspection.date %></td>
-        <td><%= inspection.honey_stores %></td>
-        <td><%= inspection.queen_status %></td>
-        <td><%= inspection.condition %></td>
-        <td><%= inspection.number_of_frames %></td>
-        <td><%= inspection.number_of_boxes %></td>
-        <td><%= inspection.brood.join(", ") %></td>
-        <td><%= inspection.feeder ? "Yes" : "No" %></td>
-        <td><%= inspection.potential_swarm ? "Yes" : "No" %></td>
-        <td><%= inspection.notes %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= react_component("InspectionsTable", props: @inspections) %>
+
