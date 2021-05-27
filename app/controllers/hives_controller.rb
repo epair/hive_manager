@@ -6,7 +6,7 @@ class HivesController < ApplicationController
 
   def show
     @hive = Hive.find(params[:id])
-    @inspections = @hive.inspections
+    @inspections = @hive.inspections.to_json(methods: :brood)
   end
 
   def new
