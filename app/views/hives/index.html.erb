@@ -1,18 +1,3 @@
 <%= link_to "Add Hive", new_hive_path, class: "button" %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Hive Name</th>
-      <th>Address</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @hives.each do |hive| %>
-      <tr>
-        <td><%= link_to hive.name, hive_path(hive) %></td>
-        <td><%= hive.addresses.first.try(:street) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= react_component("HivesTable", props: @hives) %>
