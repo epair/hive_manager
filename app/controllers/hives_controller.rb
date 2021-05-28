@@ -1,17 +1,16 @@
 class HivesController < ApplicationController
-
   def index
-    @hives = Hive.
-      where(user: current_user).
-      to_json(methods: [:queen_status,
-                       :honey_stores,
-                       :condition,
-                       :number_of_frames,
-                       :potential_swarm,
-                       :brood,
-                       :feeder,
-                       :number_of_boxes,
-                       :one_line_address])
+    @hives = Hive
+             .where(user: current_user)
+             .to_json(methods: %i[queen_status
+                                  honey_stores
+                                  condition
+                                  number_of_frames
+                                  potential_swarm
+                                  brood
+                                  feeder
+                                  number_of_boxes
+                                  one_line_address])
   end
 
   def show
@@ -49,7 +48,7 @@ class HivesController < ApplicationController
   end
 
   def hive_params
-    params.require(:hive).permit(:name, addresses_attributes: [ :id, :street, :street2, :city, :state, :zip_code ])
+    params.require(:hive).permit(:name, addresses_attributes: %i[id street street2 city state zip_code])
   end
 
   def queen_params

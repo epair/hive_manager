@@ -18,9 +18,9 @@ class InspectionsController < ApplicationController
   private
 
   def inspection_params
-    params.
-      require(:inspection).
-      permit(
+    params
+      .require(:inspection)
+      .permit(
         :date,
         :queen_status,
         :honey_stores,
