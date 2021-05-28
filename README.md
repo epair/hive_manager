@@ -13,6 +13,10 @@ Rails web app for beekeepers to track and manage hives.
 ### To Do List
 
 - [ ] Update hive/show page to show last inspection info
+- [ ] Replace menu bar with react component
+- [ ] Setup react router
+- [ ] Replace sign in & sign up forms with react components
+- [ ] Replace hive form & inspection form with react components
 - [ ] Pre-fill inspection form with previous inspection info
 - [x] Finalize inspection form with all attributes
 - [x] Replace tables with react_on_rails table component
