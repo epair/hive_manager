@@ -29,13 +29,7 @@
     "jest": "^27.0.1",
     "webpack-dev-server": "^3.11.2"
   },
-  "jest": {
-    "roots": [
-      "spec/javascript"
-    ],
-    "moduleDirectories": [
-      "node_modules",
-      "app/javascript"
-    ]
+  "scripts": {
+    "test": "jest"
   }
 }
