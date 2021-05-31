@@ -15,27 +15,7 @@
 
   <body>
 
-    <div class="top-bar">
-      <div class="top-bar-left">
-        <ul class="menu">
-          <li class="menu-text"><%= link_to 'Hive Manager', root_path %></li>
-        </ul>
-      </div>
-      <div class="top-bar-right">
-        <% if signed_in? %>
-          <ul class="dropdown menu" data-dropdown-menu>
-            <li>
-              <a>Signed in as: <%= current_user.email %></a>
-              <ul class="menu vertical">
-                <li><%= link_to 'Sign out', sign_out_path, method: :delete %></li>
-              </ul>
-            </li>
-          </ul>
-        <% else %>
-          <%= link_to 'Sign in', sign_in_path %>
-        <% end %>
-      </div>
-    </div>
+    <%= react_component("MenuBar", props: {signed_in: signed_in?, current_user: current_user}) %>
 
     <% flash.each do |key, value| %>
       <div class="callout alert" data-closable>
