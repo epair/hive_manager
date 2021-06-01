@@ -2,7 +2,7 @@ import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 
-import InspectionRow from "../../app/javascript/bundles/InspectionsTable/components/InspectionRow";
+import InspectionRow from "../../app/javascript/bundles/App/components/InspectionRow";
 
 let container = null;
 beforeEach(() => {

@@ -3,7 +3,7 @@ import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 import { MemoryRouter } from "react-router-dom";
 
-import HivesTable from "../../app/javascript/bundles/HivesTable/components/HivesTable";
+import HivesTable from "../../app/javascript/bundles/App/components/HivesTable";
 
 let container = null;
 beforeEach(() => {

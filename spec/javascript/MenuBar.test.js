@@ -2,7 +2,7 @@ import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 
-import MenuBar from "../../app/javascript/bundles/MenuBar/components/MenuBar";
+import MenuBar from "../../app/javascript/bundles/App/components/MenuBar";
 
 let container = null;
 beforeEach(() => {

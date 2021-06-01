@@ -10,9 +10,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 
-import MenuBar from '../../MenuBar/components/MenuBar'
-import HivesTable from '../../HivesTable/components/HivesTable'
-import InspectionsTable from '../../InspectionsTable/components/InspectionsTable'
+import MenuBar from './MenuBar'
+import HivesTable from './HivesTable'
+import InspectionsTable from './InspectionsTable'
 
 const useStyles = makeStyles((theme) => ({
   root: {

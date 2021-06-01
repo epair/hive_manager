@@ -3,7 +3,7 @@ import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 import { MemoryRouter } from "react-router-dom";
 
-import InspectionsTable from "../../app/javascript/bundles/InspectionsTable/components/InspectionsTable";
+import InspectionsTable from "../../app/javascript/bundles/App/components/InspectionsTable";
 
 let container = null;
 beforeEach(() => {
