@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function HivesTable(hives) {
+export default function HivesTable(props) {
   const classes = useStyles();
 
   return (
@@ -37,8 +37,8 @@ export default function HivesTable(hives) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {Object.values(hives).map((hive) => (
-	    <HiveRow {...hive} key={hive.id} />
+          {props.hives.map((hive) => (
+            <HiveRow {...hive} key={hive.id} />
           ))}
         </TableBody>
       </Table>

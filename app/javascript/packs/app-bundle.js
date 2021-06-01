@@ -1,12 +1,7 @@
 import ReactOnRails from 'react-on-rails';
 
-import HivesTable from '../bundles/HivesTable/components/HivesTable';
-import InspectionsTable from '../bundles/InspectionsTable/components/InspectionsTable';
-
-import MenuBar from '../bundles/MenuBar/components/MenuBar';
+import App from '../bundles/App/components/App';
 
 ReactOnRails.register({
-  InspectionsTable,
-  HivesTable,
-  MenuBar
+  App
 });

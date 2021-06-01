@@ -1,6 +1,7 @@
 import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
+import { MemoryRouter } from "react-router-dom";
 
 import InspectionsTable from "../../app/javascript/bundles/InspectionsTable/components/InspectionsTable";
 
@@ -19,12 +20,12 @@ afterEach(() => {
 });
 
 let props = {
-  0: { 
-    id: 0, 
-    date: '2021-01-01', 
-    honey_stores: 'moderate', 
-    queen_status: 'right', 
-    condition: 'healthy', 
+  inspections: [{
+    id: 0,
+    date: '2021-01-01',
+    honey_stores: 'moderate',
+    queen_status: 'right',
+    condition: 'healthy',
     potential_swarm: false,
     egg_brood: false,
     larvae_brood: true,
@@ -33,13 +34,16 @@ let props = {
     number_of_boxes: 3,
     notes: "notes for this visit",
     brood: ["Larvae"],
-    number_of_frames: 8 
-  }
+    number_of_frames: 8
+  }]
 };
 
 it("renders column headers and inspection rows", () => {
   act(() => {
-    render(<InspectionsTable {...props} />, container);
+    render(
+      <MemoryRouter initialEntries={["/hives/0"]}>
+        <InspectionsTable {...props} />
+      </MemoryRouter>, container);
   });
 
   expect(container.textContent).toEqual(

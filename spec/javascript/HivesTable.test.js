@@ -1,6 +1,7 @@
 import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
+import { MemoryRouter } from "react-router-dom";
 
 import HivesTable from "../../app/javascript/bundles/HivesTable/components/HivesTable";
 
@@ -19,12 +20,12 @@ afterEach(() => {
 });
 
 let props = {
-  0: { 
-    id: 0, 
+  hives: [{
+    id: 0,
     name: 'Main 1',
-    honey_stores: 'moderate', 
-    queen_status: 'right', 
-    condition: 'healthy', 
+    honey_stores: 'moderate',
+    queen_status: 'right',
+    condition: 'healthy',
     potential_swarm: false,
     egg_brood: false,
     larvae_brood: true,
@@ -35,12 +36,15 @@ let props = {
     brood: ["Larvae"],
     number_of_frames: 8,
     one_line_address: '123 Main Street #2 Atlanta, GA 30327'
-  }
+  }]
 };
 
 it("renders column headers and inspection rows", () => {
   act(() => {
-    render(<HivesTable {...props} />, container);
+    render(
+      <MemoryRouter>
+        <HivesTable {...props} />
+      </MemoryRouter>, container);
   });
 
   expect(container.textContent).toEqual(

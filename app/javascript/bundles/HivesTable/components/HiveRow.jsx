@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
+import { Link as RouterLink } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles({
   table: {
@@ -15,7 +17,7 @@ export default function HiveRow(props) {
   return (
     <TableRow key={props.id}>
       <TableCell component="th" scope="row">
-        {props.name}
+        <Link component={RouterLink} to={`/hives/${props.id}`}>{props.name}</Link>
       </TableCell>
       <TableCell align="right">{props.honey_stores}</TableCell>
       <TableCell align="right">{props.queen_status}</TableCell>

@@ -1,6 +1,7 @@
 import React from "react";
 import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
+import { MemoryRouter } from "react-router-dom"
 
 import HiveRow from "../../app/javascript/bundles/HivesTable/components/HiveRow";
 
@@ -34,7 +35,10 @@ let props = {
 
 it("renders hive row", () => {
   act(() => {
-    render(<HiveRow {...props} />, container);
+    render(
+      <MemoryRouter>
+        <HiveRow {...props} />
+      </MemoryRouter>, container);
   });
 
   expect(container.textContent).toEqual(

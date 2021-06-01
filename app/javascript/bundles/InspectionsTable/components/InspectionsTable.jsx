@@ -7,6 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { useParams } from "react-router-dom";
 
 import InspectionRow from './InspectionRow'
 
@@ -16,7 +17,8 @@ const useStyles = makeStyles({
   },
 });
 
-export default function InspectionsTable(inspections) {
+export default function InspectionsTable(props) {
+  const { hive_id } = useParams();
   const classes = useStyles();
 
   return (
@@ -37,8 +39,8 @@ export default function InspectionsTable(inspections) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {Object.values(inspections).map((inspection) => (
-	    <InspectionRow {...inspection} key={inspection.id} />
+          {props.inspections.filter((inspection) => inspection.hive_id == hive_id ).map((inspection) => (
+            <InspectionRow {...inspection} key={inspection.id} />
           ))}
         </TableBody>
       </Table>
