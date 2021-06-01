@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'support/features/clearance_helpers'
 
 RSpec.feature 'User signs out' do
-  scenario 'signs out', js: true do
+  xscenario 'signs out', js: true do
     sign_in
     sign_out
 

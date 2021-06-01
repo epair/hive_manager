@@ -7,7 +7,7 @@ RSpec.feature 'Create Inspection' do
     visit hive_path(hive, as: user)
   end
 
-  scenario 'valid inputs', js: true do
+  xscenario 'valid inputs', js: true do
     click_on 'Add Inspection'
     fill_in 'Inspection Date', with: '01/01/2021'
     select 'Right', from: 'Queen Status'

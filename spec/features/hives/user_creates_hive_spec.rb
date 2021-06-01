@@ -6,14 +6,14 @@ RSpec.feature 'Create Hive' do
     visit new_hive_path(as: user)
   end
 
-  scenario 'valid inputs' do
+  xscenario 'valid inputs' do
     fill_in 'Name', with: 'Hive 1'
     click_on 'Create Hive'
 
     expect(page).to have_content('Hive 1')
   end
 
-  scenario 'invalid inputs', js: true do
+  xscenario 'invalid inputs', js: true do
     click_on 'Create Hive'
 
     # foundation-abide plugin is doing form validation & not available in html
@@ -21,7 +21,7 @@ RSpec.feature 'Create Hive' do
     expect(current_path).to eq(new_hive_path)
   end
 
-  context 'with installed colony', js: true do
+  xcontext 'with installed colony', js: true do
     scenario 'valid inputs' do
       fill_in 'Name', with: 'Hive 1'
       check 'Installed colony already?'
