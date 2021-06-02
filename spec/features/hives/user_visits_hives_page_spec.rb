@@ -10,7 +10,7 @@ RSpec.feature 'Visit Hives Page', js: true do
     address = FactoryBot.create(:address, addressable: hive)
     inspection = FactoryBot.create(:inspection, hive: hive)
     other_hives = FactoryBot.create_list(:hive, 2, user: @user)
-    visit(hives_path(as: @user))
+    visit(root_path(as: @user))
 
     expect(page).to have_content('Hive Name')
     expect(page).to have_content('Address')

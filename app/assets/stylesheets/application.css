@@ -13,22 +13,7 @@
  *= require_tree .
  *= require_self
  */
-.grid-container {
- padding-top: .9375rem;
-}
 
-.hidden {
-  display: none;
-}
-
-.show {
-  display: grid;
-}
-
-/* #flash {
-  display: none;
-} */
-
-#clearance {
-  text-align: center;
+body {
+ margin: 0
 }

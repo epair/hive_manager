@@ -7,6 +7,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { useParams } from "react-router-dom";
+
+import InspectionRow from './InspectionRow'
 
 const useStyles = makeStyles({
   table: {
@@ -14,7 +17,8 @@ const useStyles = makeStyles({
   },
 });
 
-export default function InspectionsTable(inspections) {
+export default function InspectionsTable(props) {
+  const { hive_id } = useParams();
   const classes = useStyles();
 
   return (
@@ -35,21 +39,8 @@ export default function InspectionsTable(inspections) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {Object.values(inspections).map((inspection) => (
-            <TableRow key={inspection.id}>
-              <TableCell component="th" scope="row">
-                {inspection.date}
-              </TableCell>
-              <TableCell align="right">{inspection.honey_stores}</TableCell>
-              <TableCell align="right">{inspection.queen_status}</TableCell>
-              <TableCell align="right">{inspection.condition}</TableCell>
-              <TableCell align="right">{inspection.number_of_frames}</TableCell>
-              <TableCell align="right">{inspection.number_of_boxes}</TableCell>
-              <TableCell align="right">{inspection.brood.join(", ")}</TableCell>
-              <TableCell align="right">{inspection.feeder ? "Yes" : "No"}</TableCell>
-              <TableCell align="right">{inspection.potential_swarm ? "Yes" : "No"}</TableCell>
-              <TableCell align="right">{inspection.notes}</TableCell>
-            </TableRow>
+          {props.inspections.filter((inspection) => inspection.hive_id == hive_id ).map((inspection) => (
+            <InspectionRow {...inspection} key={inspection.id} />
           ))}
         </TableBody>
       </Table>

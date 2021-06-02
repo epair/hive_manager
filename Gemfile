@@ -42,6 +42,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara'
   gem 'pry-byebug'
+  gem 'rails-controller-testing'
 end
 
 group :development do

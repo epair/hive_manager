@@ -8,13 +8,15 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+import HiveRow from './HiveRow'
+
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
 });
 
-export default function HivesTable(hives) {
+export default function HivesTable(props) {
   const classes = useStyles();
 
   return (
@@ -35,21 +37,8 @@ export default function HivesTable(hives) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {Object.values(hives).map((hive) => (
-            <TableRow key={hive.id}>
-              <TableCell component="th" scope="row">
-                {hive.name}
-              </TableCell>
-              <TableCell align="right">{hive.honey_stores}</TableCell>
-              <TableCell align="right">{hive.queen_status}</TableCell>
-              <TableCell align="right">{hive.condition}</TableCell>
-              <TableCell align="right">{hive.number_of_frames}</TableCell>
-              <TableCell align="right">{hive.number_of_boxes}</TableCell>
-	      <TableCell align="right">{hive.brood ? hive.brood.join(", ") : ""}</TableCell>
-              <TableCell align="right">{hive.feeder ? "Yes" : "No"}</TableCell>
-              <TableCell align="right">{hive.potential_swarm ? "Yes" : "No"}</TableCell>
-              <TableCell align="right">{hive.one_line_address}</TableCell>
-            </TableRow>
+          {props.hives.map((hive) => (
+            <HiveRow {...hive} key={hive.id} />
           ))}
         </TableBody>
       </Table>
