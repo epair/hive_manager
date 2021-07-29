@@ -1,11 +1,13 @@
-class Api::AuthenticationController < ApplicationController
+class Api::AuthenticationController < Api::BaseController
+  skip_before_action :authenticate, only: [:login]
+
   def login
     @user = User
       .find_by(email: user_params[:email])
       &.authenticate(user_params[:password])
 
     if @user
-      render json: { token: JsonWebToken.encode(user_params.as_json) }
+      render json: { token: @user.token }
     else
       render json: { error: 'Unauthorized' }, status: :unauthorized
     end
