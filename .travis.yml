@@ -9,6 +9,10 @@ services:
 addons:
   chrome: stable
 
+env:
+  global:
+    CC_TEST_REPORTER_ID=4909ecb65071cda05313bb6560b1f39225430c596cfe879f19e3ca473d815d6d
+
 cache:
   bundler: true
   directories:
