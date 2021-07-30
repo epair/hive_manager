@@ -2,8 +2,7 @@ import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
@@ -13,11 +12,14 @@ import AddIcon from '@material-ui/icons/Add';
 import MenuBar from './MenuBar'
 import HivesTable from './HivesTable'
 import InspectionsTable from './InspectionsTable'
+import SignInForm from './SignInForm'
+import PrivateRoute from '../auth/PrivateRoute'
+import { ProvideAuth } from '../auth/useAuth'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
-    margin: 8
+    margin: '24px'
   }
 }));
 
@@ -25,15 +27,12 @@ export default function App(props) {
   const classes = useStyles();
 
   return (
-    <Router>
-      <MenuBar
-        current_user={props.current_user}
-        signed_in={props.signed_in}
-      />
-      <div className={classes.root}>
-        <Grid container spacing={3}>
+    <ProvideAuth>
+      <Router>
+        <MenuBar/>
+        <div className={classes.root}>
           <Switch>
-            <Route exact path="/">
+            <PrivateRoute exact path="/">
               <Grid item xs={12}>
                 <Fab
                   variant="extended"
@@ -46,15 +45,18 @@ export default function App(props) {
                 </Fab>
                 <HivesTable className={classes.table} hives={props.hives} />
               </Grid>
-            </Route>
-            <Route path="/hives/:hive_id">
+            </PrivateRoute>
+            <PrivateRoute path="/hives/:hive_id">
               <Grid item xs={12}>
                 <InspectionsTable inspections={props.inspections} />
               </Grid>
+            </PrivateRoute>
+            <Route path="/sign_in">
+              <SignInForm />
             </Route>
           </Switch>
-        </Grid>
-      </div>
-    </Router>
+        </div>
+      </Router>
+    </ProvideAuth>
   );
 }

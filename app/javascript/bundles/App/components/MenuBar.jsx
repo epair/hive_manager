@@ -5,9 +5,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from '@material-ui/core/Switch';
-import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import { useAuth } from '../auth/useAuth'
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
@@ -18,8 +19,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MenuBar(props) {
+export default function MenuBar() {
   const classes = useStyles();
+  let auth = useAuth();
+  let history = useHistory();
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -31,13 +35,19 @@ export default function MenuBar(props) {
     setAnchorEl(null);
   };
 
+  let handleSignOut = (event) => {
+    setAnchorEl(null);
+    auth.logout(() => history.push('/'));
+    event.preventDefault();
+  };
+
   return (
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" className={classes.title}>
           Hive Manager
         </Typography>
-        {props.signed_in && (
+        {auth.isSignedIn && (
           <div>
             <IconButton
               aria-label="account of current user"
@@ -63,7 +73,7 @@ export default function MenuBar(props) {
               open={open}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>Sign Out</MenuItem>
+              <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
             </Menu>
           </div>
         )}
