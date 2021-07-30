@@ -32,7 +32,7 @@ gem 'react_on_rails', '= 12.0.4'
 group :test do
   gem 'rexml'
   gem 'selenium-webdriver'
-  gem 'simplecov', '< 0.18', require: false
+  gem 'simplecov', require: false
 end
 
 group :development, :test do

@@ -284,7 +284,7 @@ DEPENDENCIES
   rspec-rails (~> 5.0.0)
   sass-rails (>= 6)
   selenium-webdriver
-  simplecov (< 0.18)
+  simplecov
   spring
   tzinfo-data
   web-console (>= 4.1.0)
