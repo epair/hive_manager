@@ -1,7 +1,7 @@
-import ReactOnRails from 'react-on-rails';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import ReactApp from '../bundles/App';
 
-import App from '../bundles/App/components/App';
-
-ReactOnRails.register({
-  App
+document.addEventListener("DOMContentLoaded", () => {
+  ReactDOM.render(<ReactApp />, document.getElementById('root'));
 });
