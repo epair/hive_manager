@@ -4,17 +4,13 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
 
-import MenuBar from './MenuBar'
-import HivesTable from './HivesTable'
-import InspectionsTable from './InspectionsTable'
-import SignInForm from './SignInForm'
-import PrivateRoute from '../auth/PrivateRoute'
-import { ProvideAuth } from '../auth/useAuth'
+import MenuBar from './app/MenuBar'
+import PrivateRoute from './app/PrivateRoute'
+import SignInForm from './features/user/SignInForm'
+import HivesPage from './features/hives/HivesPage'
+import InspectionsPage from './features/inspections/InspectionsPage'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -23,40 +19,19 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export default function App(props) {
+export default function App() {
   const classes = useStyles();
 
   return (
-    <ProvideAuth>
-      <Router>
-        <MenuBar/>
-        <div className={classes.root}>
-          <Switch>
-            <PrivateRoute exact path="/">
-              <Grid item xs={12}>
-                <Fab
-                  variant="extended"
-                  color="secondary"
-                  size="small"
-                  aria-label="add"
-                >
-                  <AddIcon />
-                  Add Hive
-                </Fab>
-                <HivesTable className={classes.table} hives={props.hives} />
-              </Grid>
-            </PrivateRoute>
-            <PrivateRoute path="/hives/:hive_id">
-              <Grid item xs={12}>
-                <InspectionsTable inspections={props.inspections} />
-              </Grid>
-            </PrivateRoute>
-            <Route path="/sign_in">
-              <SignInForm />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
-    </ProvideAuth>
+    <Router>
+      <MenuBar/>
+      <div className={classes.root}>
+        <Switch>
+          <PrivateRoute exact path="/" component={HivesPage} />
+          <PrivateRoute exact path="/hives/:hive_id" component={InspectionsPage} />
+          <Route exact path="/sign_in" component={SignInForm} />
+        </Switch>
+      </div>
+    </Router>
   );
 }

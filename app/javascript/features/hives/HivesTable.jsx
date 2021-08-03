@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -16,8 +17,9 @@ const useStyles = makeStyles({
   },
 });
 
-export default function HivesTable(props) {
+export default function HivesTable() {
   const classes = useStyles();
+  const hives = useSelector((state) => state.hives)
 
   return (
     <TableContainer component={Paper}>
@@ -37,7 +39,7 @@ export default function HivesTable(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.hives.map((hive) => (
+          {hives.map((hive) => (
             <HiveRow {...hive} key={hive.id} />
           ))}
         </TableBody>
