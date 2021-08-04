@@ -27,7 +27,7 @@ RSpec.describe 'Hives Api', type: :request do
     end
 
     it 'returns an array of hives' do
-      expect(response_body).to eq(JSON.parse(hives))
+      expect(response_body["hives"]).to eq(JSON.parse(hives))
     end
 
     it 'returns a successful status' do
