@@ -10,7 +10,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 
-import { toggleLoggedIn } from '../features/user/currentUserSlice'
+import { logout } from '../features/user/currentUserSlice'
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
@@ -39,7 +39,7 @@ export default function MenuBar() {
 
   let handleSignOut = (event) => {
     setAnchorEl(null);
-    dispatch(toggleLoggedIn({ isLoggedIn: false }));
+    dispatch(logout());
     history.push('/sign_in')
     event.preventDefault();
   };

@@ -7,7 +7,7 @@ class Api::AuthenticationController < Api::BaseController
       &.authenticate(user_params[:password])
 
     if @user
-      render json: { token: @user.token }
+      render json: { user: @user }
     else
       render json: { error: 'Unauthorized' }, status: :unauthorized
     end
