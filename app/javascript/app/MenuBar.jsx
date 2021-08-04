@@ -40,6 +40,7 @@ export default function MenuBar() {
   let handleSignOut = (event) => {
     setAnchorEl(null);
     dispatch(logout());
+    localStorage.removeItem('token')
     history.push('/sign_in')
     event.preventDefault();
   };

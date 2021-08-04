@@ -3,7 +3,12 @@
 
 export async function client(endpoint, { body, ...customConfig } = {}) {
   const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
-  const headers = { 'Content-Type': 'application/json', 'X-CSRF-Token': csrf }
+  const authToken = localStorage.getItem('token')
+  const headers = {
+    'Content-Type': 'application/json',
+    'X-CSRF-Token': csrf,
+    'Authorization': `Bearer ${authToken}`,
+  }
 
   const config = {
     method: body ? 'POST' : 'GET',

@@ -49,6 +49,7 @@ export default function SignInForm() {
           login({ email, password })
         )
         unwrapResult(resultAction)
+        localStorage.setItem('token', resultAction.payload.token)
         setEmail('')
         setPassword('')
         history.push('/')
@@ -65,7 +66,7 @@ export default function SignInForm() {
       <Grid className={classes.title} item xs={12}>
         <Typography variant="h3" gutterBottom>Sign In</Typography>
       </Grid>
-      <form className={classes.form} onSubmit={(e) => onLoginClick(e)}>
+      <form className={classes.form}>
         <Grid className={classes.field} item xs={12}>
           <TextField
             fullWidth
@@ -94,6 +95,7 @@ export default function SignInForm() {
             variant="contained"
             type="submit"
             disabled={!canLogin}
+            onClick={onLoginClick}
           >
             Sign in
           </Button>
