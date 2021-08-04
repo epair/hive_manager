@@ -1,15 +1,6 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
-
-const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
-  },
-});
-
-  const classes = useStyles();
 
 export const InspectionRow = (props) => {
   return (
