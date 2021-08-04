@@ -28,7 +28,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export default function SignInForm() {
+export const SignInForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginStatus, setLoginStatus] = useState('idle');

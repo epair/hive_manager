@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MenuBar() {
+export const MenuBar = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   let history = useHistory();

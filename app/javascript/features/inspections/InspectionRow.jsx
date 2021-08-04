@@ -9,9 +9,9 @@ const useStyles = makeStyles({
   },
 });
 
-export default function InspectionsTable(props) {
   const classes = useStyles();
 
+export const InspectionRow = (props) => {
   return (
     <TableRow key={props.id}>
       <TableCell component="th" scope="row">

@@ -14,6 +14,7 @@ const useStyles = makeStyles({
 export default function HiveRow(props) {
   const classes = useStyles();
 
+export const HiveRow = (props) => {
   return (
     <TableRow key={props.id}>
       <TableCell component="th" scope="row">

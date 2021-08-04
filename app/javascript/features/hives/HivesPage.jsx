@@ -3,9 +3,9 @@ import Grid from '@material-ui/core/Grid';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 
-import HivesTable from './HivesTable'
+import { HivesTable } from './HivesTable'
 
-export default function HivesPage() {
+export const HivesPage = () => {
   return (
     <Grid item xs={12}>
       <Fab

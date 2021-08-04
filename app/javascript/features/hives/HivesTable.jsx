@@ -9,7 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-import HiveRow from './HiveRow'
+import { HiveRow } from './HiveRow'
 
 const useStyles = makeStyles({
   table: {
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function HivesTable() {
+export const HivesTable = () => {
   const classes = useStyles();
   const hives = useSelector((state) => state.hives)
 

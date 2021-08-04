@@ -6,11 +6,11 @@ import {
 } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 
-import MenuBar from './app/MenuBar'
-import PrivateRoute from './app/PrivateRoute'
-import SignInForm from './features/user/SignInForm'
-import HivesPage from './features/hives/HivesPage'
-import InspectionsPage from './features/inspections/InspectionsPage'
+import { MenuBar } from './app/MenuBar'
+import { PrivateRoute } from './app/PrivateRoute'
+import { SignInForm } from './features/user/SignInForm'
+import { HivesPage } from './features/hives/HivesPage'
+import { InspectionsPage } from './features/inspections/InspectionsPage'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -19,7 +19,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export default function App() {
+export const App = () => {
   const classes = useStyles();
 
   return (
