@@ -5,7 +5,10 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { useHistory } from 'react-router-dom';
-import { useAuth } from '../auth/useAuth'
+import { useDispatch } from 'react-redux'
+import { unwrapResult } from '@reduxjs/toolkit'
+
+import { login } from './currentUserSlice'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -25,25 +28,45 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export default function SignInForm() {
+export const SignInForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loginStatus, setLoginStatus] = useState('idle');
+
+  const history = useHistory();
   const classes = useStyles();
+  const dispatch = useDispatch()
 
-  let history = useHistory();
-  let auth = useAuth();
+  const canLogin =
+    [email, password].every(Boolean) && loginStatus === 'idle'
 
-  let signin = (event) => {
-    auth.login(email, password, () => history.push('/'));
-    event.preventDefault();
+
+  const onLoginClick = async () => {
+    if (canLogin) {
+      try {
+        setLoginStatus('pending')
+        const resultAction = await dispatch(
+          login({ email, password })
+        )
+        unwrapResult(resultAction)
+        localStorage.setItem('token', resultAction.payload.token)
+        setEmail('')
+        setPassword('')
+        history.push('/')
+      } catch (err) {
+        console.error('Failed to login: ', err)
+      } finally {
+        setLoginStatus('idle')
+      }
+    }
   };
 
   return (
-    <Grid className={classes.root} container justify="center">
+    <Grid className={classes.root} container justifyContent="center">
       <Grid className={classes.title} item xs={12}>
         <Typography variant="h3" gutterBottom>Sign In</Typography>
       </Grid>
-      <form className={classes.form} onSubmit={(e) => signin(e)}>
+      <form className={classes.form}>
         <Grid className={classes.field} item xs={12}>
           <TextField
             fullWidth
@@ -65,13 +88,14 @@ export default function SignInForm() {
             onChange={(event) => setPassword(event.target.value)}
           />
         </Grid>
-
         <Grid className={classes.submitButton} item xs={12}>
           <Button
             fullWidth
             color="primary"
             variant="contained"
             type="submit"
+            disabled={!canLogin}
+            onClick={onLoginClick}
           >
             Sign in
           </Button>

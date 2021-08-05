@@ -11,8 +11,8 @@ RSpec.describe 'Authentication', type: :request do
       end
 
       it 'returns json web token' do
-        token = JSON.parse(response.body)['token']
-        expect(token).to eq(JsonWebToken.encode(params[:user]))
+        token = response_body['user']['token']
+        expect(token).to eq(user.token)
       end
 
       it 'returns a successful status' do

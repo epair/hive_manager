@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { useParams } from "react-router-dom";
 
-import InspectionRow from './InspectionRow'
+import { InspectionRow } from './InspectionRow'
 
 const useStyles = makeStyles({
   table: {
@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function InspectionsTable(props) {
+export const InspectionsTable = (props) => {
   const { hive_id } = useParams();
   const classes = useStyles();
 

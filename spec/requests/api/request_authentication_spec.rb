@@ -14,8 +14,7 @@ RSpec.describe "Authenticating with the API" do
   context "when the user provides a valid api token" do
     it "allows the user to pass" do
       user = FactoryBot.create(:user)
-      params = { email: user.email, password: user.password }
-      credentials = authenticate_with_token(JsonWebToken.encode(params))
+      credentials = authenticate_with_token(user.token)
 
       get "/api/test", headers: { "Authorization" => credentials }
 
@@ -42,7 +41,4 @@ RSpec.describe "Authenticating with the API" do
     end
   end
 
-  def authenticate_with_token(token)
-    ActionController::HttpAuthentication::Token.encode_credentials(token)
-  end
 end

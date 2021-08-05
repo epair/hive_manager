@@ -7,8 +7,10 @@ import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import { useAuth } from '../auth/useAuth'
 import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
+
+import { logout } from '../features/user/currentUserSlice'
 
 const useStyles = makeStyles((theme) => ({
   menuButton: {
@@ -19,9 +21,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MenuBar() {
+export const MenuBar = () => {
   const classes = useStyles();
-  let auth = useAuth();
+  const dispatch = useDispatch();
   let history = useHistory();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -37,9 +39,13 @@ export default function MenuBar() {
 
   let handleSignOut = (event) => {
     setAnchorEl(null);
-    auth.logout(() => history.push('/'));
+    dispatch(logout());
+    localStorage.removeItem('token')
+    history.push('/sign_in')
     event.preventDefault();
   };
+
+  const isLoggedIn = useSelector((state) => state.currentUser.isLoggedIn)
 
   return (
     <AppBar position="static">
@@ -47,7 +53,7 @@ export default function MenuBar() {
         <Typography variant="h6" className={classes.title}>
           Hive Manager
         </Typography>
-        {auth.isSignedIn && (
+        {isLoggedIn && (
           <div>
             <IconButton
               aria-label="account of current user"
