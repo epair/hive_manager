@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 
 import { MenuBar } from './app/MenuBar'
@@ -23,7 +19,7 @@ export const App = () => {
   const classes = useStyles();
 
   return (
-    <Router>
+    <React.Fragment>
       <MenuBar/>
       <div className={classes.root}>
         <Switch>
@@ -32,6 +28,6 @@ export const App = () => {
           <Route exact path="/sign_in" component={SignInForm} />
         </Switch>
       </div>
-    </Router>
+    </React.Fragment>
   );
 }

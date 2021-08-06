@@ -1,8 +1,15 @@
+import 'whatwg-fetch'
 // A tiny wrapper around fetch(), borrowed from
 // https://kentcdodds.com/blog/replace-axios-with-a-simple-custom-fetch-wrapper
 
 export async function client(endpoint, { body, ...customConfig } = {}) {
-  const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+  let csrf
+  const csrfQuery = document.querySelector("meta[name='csrf-token']")
+
+  if (csrfQuery !== null) {
+    csrf = csrfQuery.getAttribute("content");
+  }
+
   const authToken = localStorage.getItem('token')
   const headers = {
     'Content-Type': 'application/json',
