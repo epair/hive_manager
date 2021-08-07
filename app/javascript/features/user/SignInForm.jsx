@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -7,8 +7,20 @@ import Typography from '@material-ui/core/Typography';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { unwrapResult } from '@reduxjs/toolkit'
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 
 import { login } from './currentUserSlice'
+
+const validationSchema = yup.object({
+  email: yup
+    .string('Enter your email')
+    .email('Enter a valid email')
+    .required('Email is required'),
+  password: yup
+    .string('Enter your password')
+    .required('Password is required'),
+});
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -29,35 +41,31 @@ const useStyles = makeStyles(() => ({
 }));
 
 export const SignInForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [loginStatus, setLoginStatus] = useState('idle');
-
   const history = useHistory();
   const classes = useStyles();
   const dispatch = useDispatch()
 
-  const canLogin =
-    [email, password].every(Boolean) && loginStatus === 'idle'
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      onLoginClick(values.email, values.password)
+    },
+  });
 
-
-  const onLoginClick = async () => {
-    if (canLogin) {
-      try {
-        setLoginStatus('pending')
-        const resultAction = await dispatch(
-          login({ email, password })
-        )
-        unwrapResult(resultAction)
-        localStorage.setItem('token', resultAction.payload.token)
-        setEmail('')
-        setPassword('')
-        history.push('/')
-      } catch (err) {
-        console.error('Failed to login: ', err)
-      } finally {
-        setLoginStatus('idle')
-      }
+  const onLoginClick = async (email, password) => {
+    try {
+      const resultAction = await dispatch(
+        login({ email, password })
+      )
+      unwrapResult(resultAction)
+      localStorage.setItem('token', resultAction.payload.token)
+      history.push('/')
+    } catch (err) {
+      console.error('Failed to login: ', err)
     }
   };
 
@@ -66,7 +74,7 @@ export const SignInForm = () => {
       <Grid className={classes.title} item xs={12}>
         <Typography variant="h3" gutterBottom>Sign In</Typography>
       </Grid>
-      <form className={classes.form}>
+      <form className={classes.form} onSubmit={formik.handleSubmit}>
         <Grid className={classes.field} item xs={12}>
           <TextField
             fullWidth
@@ -74,7 +82,10 @@ export const SignInForm = () => {
             id="email"
             name="email"
             label="Email"
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={formik.handleChange}
+            value={formik.values.email}
+            helperText={formik.touched.email && formik.errors.email}
+            error={formik.touched.email && Boolean(formik.errors.email)}
           />
         </Grid>
         <Grid className={classes.field} item xs={12}>
@@ -85,7 +96,10 @@ export const SignInForm = () => {
             name="password"
             label="Password"
             type="password"
-            onChange={(event) => setPassword(event.target.value)}
+            onChange={formik.handleChange}
+            value={formik.values.password}
+            helperText={formik.touched.password && formik.errors.password}
+            error={formik.touched.password && Boolean(formik.errors.password)}
           />
         </Grid>
         <Grid className={classes.submitButton} item xs={12}>
@@ -94,8 +108,6 @@ export const SignInForm = () => {
             color="primary"
             variant="contained"
             type="submit"
-            disabled={!canLogin}
-            onClick={onLoginClick}
           >
             Sign in
           </Button>
