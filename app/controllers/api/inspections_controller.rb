@@ -2,7 +2,7 @@ module Api
   class InspectionsController < Api::BaseController
     def index
       @inspections = current_user.inspections
-      render json: { inspections: @inspections }
+      render json: { inspections: @inspections }, methods: :brood
     end
 
     def create

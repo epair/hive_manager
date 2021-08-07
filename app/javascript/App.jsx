@@ -24,7 +24,7 @@ export const App = () => {
       <div className={classes.root}>
         <Switch>
           <PrivateRoute exact path="/" component={HivesPage} />
-          <PrivateRoute exact path="/hives/:hive_id" component={InspectionsPage} />
+          <PrivateRoute exact path="/hives/:hiveId" component={InspectionsPage} />
           <Route exact path="/sign_in" component={SignInForm} />
         </Switch>
       </div>

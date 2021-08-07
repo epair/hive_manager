@@ -6,12 +6,17 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import hivesReducer from '../../../app/javascript/features/hives/hivesSlice'
 import currentUserReducer from '../../../app/javascript/features/user/currentUserSlice'
+import inspectionsReducer from '../../../app/javascript/features/inspections/inspectionsSlice'
 
 function render(
   ui,
   {
     preloadedState,
-    store = configureStore({ reducer: { currentUser: currentUserReducer, hives: hivesReducer }, preloadedState }),
+    store = configureStore({ reducer: {
+      currentUser: currentUserReducer,
+      hives: hivesReducer,
+      inspections: inspectionsReducer
+    }, preloadedState }),
     ...renderOptions
   } = {}
 ) {
