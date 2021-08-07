@@ -6,7 +6,7 @@ import { InspectionsTable } from './InspectionsTable'
 export const InspectionsPage = () => {
   return (
     <Grid item xs={12}>
-      <InspectionsTable inspections={props.inspections} />
+      <InspectionsTable />
     </Grid>
   )
 }
