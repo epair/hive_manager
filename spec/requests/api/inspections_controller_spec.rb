@@ -13,7 +13,7 @@ RSpec.describe 'Hives Api', type: :request do
     end
 
     it 'returns an array of inspections' do
-      expect(response_body["inspections"]).to eq(JSON.parse(inspections.to_json))
+      expect(response_body["inspections"]).to eq(JSON.parse(inspections.to_json(methods: [:brood])))
     end
 
     it 'returns a successful status' do
