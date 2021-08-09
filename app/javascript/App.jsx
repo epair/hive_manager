@@ -7,6 +7,7 @@ import { PrivateRoute } from './app/PrivateRoute'
 import { SignInForm } from './features/user/SignInForm'
 import { HivesPage } from './features/hives/HivesPage'
 import { InspectionsPage } from './features/inspections/InspectionsPage'
+import Alert from './features/alerts/Alert'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -21,6 +22,7 @@ export const App = () => {
   return (
     <React.Fragment>
       <MenuBar/>
+      <Alert/>
       <div className={classes.root}>
         <Switch>
           <PrivateRoute exact path="/" component={HivesPage} />

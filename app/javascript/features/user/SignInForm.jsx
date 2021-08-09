@@ -11,6 +11,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 import { login } from './currentUserSlice'
+import { setAlert } from '../alerts/reducer'
 
 const validationSchema = yup.object({
   email: yup
@@ -65,7 +66,7 @@ export const SignInForm = () => {
       localStorage.setItem('token', resultAction.payload.token)
       history.push('/')
     } catch (err) {
-      console.error('Failed to login: ', err)
+      dispatch(setAlert(err))
     }
   };
 
