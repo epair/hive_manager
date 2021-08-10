@@ -12,6 +12,14 @@ export const fetchHives = createAsyncThunk('hives/fetchHives', async () => {
   return response.hives
 })
 
+export const addNewHive = createAsyncThunk(
+  'hives/addNewHive',
+  async initialHive => {
+    const response = await client.post('/api/hives', { hive: initialHive })
+    return response.hive
+  }
+)
+
 const hivesSlice = createSlice({
   name: 'hives',
   initialState,
@@ -28,6 +36,9 @@ const hivesSlice = createSlice({
       state.status = 'failed'
       state.error = action.error
     },
+    [addNewHive.fulfilled]: (state, action) => {
+      state.hives.push(action.payload)
+    }
   }
 })
 
