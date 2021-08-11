@@ -27,7 +27,7 @@ module Api
       if @queen.try(:save) && @hive_queen.try(:save) && @hive.save
         render json: { hive: @hive, queen: @queen }, status: :created
       elsif @hive.save
-        render json: @hive, status: :created
+        render json: { hive: @hive }, status: :created
       else
         render json: @hive.errors.full_messages, status: :unprocessable_entity
       end
@@ -36,7 +36,7 @@ module Api
     private
 
     def installed_colony?
-      params.require(:hive).permit(:installed_colony)[:installed_colony] === "true"
+      params.require(:hive).permit(:installed_colony)[:installed_colony]
     end
 
     def hive_params
@@ -44,7 +44,7 @@ module Api
     end
 
     def queen_params
-      params.require(:queen).permit(:breed)
+      params.require(:hive).permit(:breed)
     end
   end
 end

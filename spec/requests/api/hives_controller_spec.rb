@@ -47,7 +47,7 @@ RSpec.describe 'Hives Api', type: :request do
         end
 
         it 'returns created hive resource' do
-          expect(response_body["name"]).to eq(params[:hive][:name])
+          expect(response_body["hive"]["name"]).to eq(params[:hive][:name])
         end
 
         it 'returns a created status' do
@@ -76,9 +76,7 @@ RSpec.describe 'Hives Api', type: :request do
         let(:params) { {
           hive: {
             name: 'My hive',
-            installed_colony: true
-          },
-          queen: {
+            installed_colony: true,
             breed: :italian
           }
         } }
@@ -91,7 +89,7 @@ RSpec.describe 'Hives Api', type: :request do
 
         it 'renders hive and queen resources' do
           expect(response_body["hive"]["name"]).to eq(params[:hive][:name])
-          expect(response_body["queen"]["breed"]).to eq(params[:queen][:breed].to_s)
+          expect(response_body["queen"]["breed"]).to eq(params[:hive][:breed].to_s)
         end
 
         it 'returns a created status' do
