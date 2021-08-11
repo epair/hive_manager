@@ -47,7 +47,7 @@ RSpec.describe 'Hives Api', type: :request do
         end
 
         it 'returns created hive resource' do
-          expect(response_body["name"]).to eq(params[:hive][:name])
+          expect(response_body["hive"]["name"]).to eq(params[:hive][:name])
         end
 
         it 'returns a created status' do

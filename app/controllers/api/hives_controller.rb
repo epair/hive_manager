@@ -27,7 +27,7 @@ module Api
       if @queen.try(:save) && @hive_queen.try(:save) && @hive.save
         render json: { hive: @hive, queen: @queen }, status: :created
       elsif @hive.save
-        render json: @hive, status: :created
+        render json: { hive: @hive }, status: :created
       else
         render json: @hive.errors.full_messages, status: :unprocessable_entity
       end
