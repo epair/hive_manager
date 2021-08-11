@@ -6,6 +6,7 @@ import { MenuBar } from './app/MenuBar'
 import { PrivateRoute } from './app/PrivateRoute'
 import { SignInForm } from './features/user/SignInForm'
 import { HivesPage } from './features/hives/HivesPage'
+import { HiveForm } from './features/hives/HiveForm'
 import { InspectionsPage } from './features/inspections/InspectionsPage'
 import Alert from './features/alerts/Alert'
 
@@ -27,6 +28,7 @@ export const App = () => {
         <Switch>
           <PrivateRoute exact path="/" component={HivesPage} />
           <PrivateRoute exact path="/hives/:hiveId" component={InspectionsPage} />
+          <PrivateRoute exact path="/new_hive" component={HiveForm} />
           <Route exact path="/sign_in" component={SignInForm} />
         </Switch>
       </div>
