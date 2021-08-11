@@ -36,7 +36,7 @@ module Api
     private
 
     def installed_colony?
-      params.require(:hive).permit(:installed_colony)[:installed_colony] === "true"
+      params.require(:hive).permit(:installed_colony)[:installed_colony]
     end
 
     def hive_params
@@ -44,7 +44,7 @@ module Api
     end
 
     def queen_params
-      params.require(:queen).permit(:breed)
+      params.require(:hive).permit(:breed)
     end
   end
 end
