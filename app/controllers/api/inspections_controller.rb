@@ -10,7 +10,7 @@ module Api
       @inspection = @hive.inspections.new(inspection_params)
 
       if @inspection.save
-        render json: { inspection: @inspection }, status: :created
+        render json: { inspection: @inspection }, status: :created, methods: :brood
       else
         render json: { message: @inspection.errors.full_messages }, status: :unprocessable_entity
       end
