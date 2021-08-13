@@ -12,6 +12,14 @@ export const fetchInspections = createAsyncThunk('inspections/fetchInspections',
   return response.inspections
 })
 
+export const addNewInspection = createAsyncThunk(
+  'inspections/addNewInspection',
+  async initialInspection => {
+    const response = await client.post('/api/inspections', { inspection: initialInspection })
+    return response.inspection
+  }
+)
+
 const inspectionsSlice = createSlice({
   name: 'inspections',
   initialState,
@@ -28,6 +36,9 @@ const inspectionsSlice = createSlice({
       state.status = 'failed'
       state.error = action.error
     },
+    [addNewInspection.fulfilled]: (state, action) => {
+      state.inspections.push(action.payload)
+    }
   }
 })
 
