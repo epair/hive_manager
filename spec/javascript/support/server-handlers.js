@@ -13,6 +13,9 @@ const handlers = [
   rest.get('/api/inspections', (_, res, ctx) => {
     return res(ctx.json({ inspections: [{id: 1, hive_id: 1, date: '2021-08-07', brood: []}]}), ctx.delay(50))
   }),
+  rest.post('/api/inspections', (req, res, ctx) => {
+    return res(ctx.json({ inspection: {id: 2, hive_id: 1, date: '2021-08-12', brood:[]}}), ctx.delay(50))
+  }),
 ]
 
 export { handlers }

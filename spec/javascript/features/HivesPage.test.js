@@ -31,3 +31,15 @@ test('filling out form and clicking submit adds a hive to the list', async () =>
 
   expect(await screen.findByText(/Neighbor 1/i)).toBeInTheDocument()
 })
+
+test('filling out form and clicking submit adds a hive to the list', async () => {
+  render(<App />, { preloadedState: { currentUser: { isLoggedIn: true }}})
+
+  userEvent.click(await screen.findByText(/Home/i))
+  userEvent.click(await screen.findByText(/Add Inspection/i))
+
+  userEvent.type(screen.getByLabelText('Inspection Date'), '08/12/2021')
+  userEvent.click(screen.getByRole('button', { name: /Create Inspection/i }))
+
+  expect(await screen.findByText(/2021-08-12/i)).toBeInTheDocument()
+})
