@@ -3,14 +3,8 @@ import 'whatwg-fetch'
 // https://kentcdodds.com/blog/replace-axios-with-a-simple-custom-fetch-wrapper
 
 export async function client(endpoint, { body, ...customConfig } = {}) {
-  let csrf
-  const csrfQuery = document.querySelector("meta[name='csrf-token']")
-
-  if (csrfQuery !== null) {
-    csrf = csrfQuery.getAttribute("content");
-  }
-
   const authToken = localStorage.getItem('token')
+  const csrf = getCsrf()
   const headers = {
     'Content-Type': 'application/json',
     'X-CSRF-Token': csrf,
@@ -40,6 +34,14 @@ export async function client(endpoint, { body, ...customConfig } = {}) {
     throw new Error(response.statusText)
   } catch (err) {
     return Promise.reject(err.message ? err.message : data)
+  }
+}
+
+const getCsrf = () => {
+  const csrfQuery = document.querySelector("meta[name='csrf-token']")
+
+  if (csrfQuery !== null) {
+    return csrfQuery.getAttribute("content");
   }
 }
 
