@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -21,6 +20,7 @@ import { useFormik } from 'formik';
 import { useParams } from "react-router-dom";
 import * as yup from 'yup';
 
+import { Button } from '../components/Button';
 import { addNewInspection } from './inspectionsSlice'
 import { setAlert } from '../alerts/reducer'
 
@@ -280,16 +280,7 @@ export const InspectionForm = () => {
             />
           </Grid>
 
-          <Grid className={classes.submitButton} item xs={12}>
-            <Button
-              fullWidth
-              color="primary"
-              variant="contained"
-              type="submit"
-            >
-              Create Inspection
-            </Button>
-          </Grid>
+          <Button text="Create Inspection" className={classes.submitButton} xs={12}/>
         </Grid>
       </form>
     </React.Fragment>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -16,6 +15,7 @@ import { unwrapResult } from '@reduxjs/toolkit'
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
+import { Button } from '../components/Button'
 import { addNewHive } from './hivesSlice'
 import { setAlert } from '../alerts/reducer'
 
@@ -122,16 +122,7 @@ export const HiveForm = () => {
             </FormControl>
           </Grid>
         }
-        <Grid className={classes.submitButton} item xs={6}>
-          <Button
-            fullWidth
-            color="primary"
-            variant="contained"
-            type="submit"
-          >
-            Create Hive
-          </Button>
-        </Grid>
+        <Button text="Create Hive" className={classes.submitButton} xs={6}/>
       </form>
     </Grid>
   );
