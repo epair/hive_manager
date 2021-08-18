@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { useHistory } from 'react-router-dom';
@@ -10,6 +9,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 import { Button } from '../components/Button'
+import { TextField } from '../components/TextField'
 import { login } from './currentUserSlice'
 import { setAlert } from '../alerts/reducer'
 
@@ -77,31 +77,10 @@ export const SignInForm = () => {
       </Grid>
       <form className={classes.form} onSubmit={formik.handleSubmit}>
         <Grid className={classes.field} item xs={12}>
-          <TextField
-            fullWidth
-            variant="outlined"
-            id="email"
-            name="email"
-            label="Email"
-            onChange={formik.handleChange}
-            value={formik.values.email}
-            helperText={formik.touched.email && formik.errors.email}
-            error={formik.touched.email && Boolean(formik.errors.email)}
-          />
+          <TextField value="email" label="Email" formik={formik}/>
         </Grid>
         <Grid className={classes.field} item xs={12}>
-          <TextField
-            fullWidth
-            variant="outlined"
-            id="password"
-            name="password"
-            label="Password"
-            type="password"
-            onChange={formik.handleChange}
-            value={formik.values.password}
-            helperText={formik.touched.password && formik.errors.password}
-            error={formik.touched.password && Boolean(formik.errors.password)}
-          />
+          <TextField value="password" label="Password" type="password" formik={formik}/>
         </Grid>
         <Button text="Sign In" className={classes.submitButton} xs={12}/>
       </form>

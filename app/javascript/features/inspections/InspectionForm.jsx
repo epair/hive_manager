@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -21,6 +20,7 @@ import { useParams } from "react-router-dom";
 import * as yup from 'yup';
 
 import { Button } from '../components/Button';
+import { TextField } from '../components/TextField';
 import { addNewInspection } from './inspectionsSlice'
 import { setAlert } from '../alerts/reducer'
 
@@ -99,14 +99,11 @@ export const InspectionForm = () => {
         <Grid container className={classes.form}>
           <Grid item xs={6} className={classes.field}>
             <TextField
-              id="date"
+              value="date"
               label="Inspection Date"
               type="date"
               className={classes.textField}
-              value={formik.values.date}
-              onChange={formik.handleChange}
-              helperText={formik.touched.date && formik.errors.date}
-              error={formik.touched.date && Boolean(formik.errors.date)}
+              formik={formik}
               InputLabelProps={{
                 shrink: true,
               }}
@@ -178,14 +175,11 @@ export const InspectionForm = () => {
           </Grid>
           <Grid item xs={6} className={classes.field}>
             <TextField
-              id="number_of_boxes"
+              value="number_of_boxes"
               label="Number of Boxes"
               type="number"
+              formik={formik}
               className={classes.textField}
-              value={formik.values.number_of_boxes}
-              onChange={formik.handleChange}
-              helperText={formik.touched.number_of_boxes && formik.errors.number_of_boxes}
-              error={formik.touched.number_of_boxes && Boolean(formik.errors.number_of_boxes)}
               InputLabelProps={{
                 shrink: true,
               }}
@@ -229,14 +223,11 @@ export const InspectionForm = () => {
           </Grid>
           <Grid item xs={6} className={classes.field}>
             <TextField
-              id="number_of_frames"
+              value="number_of_frames"
               label="Number of Frames"
               type="number"
               className={classes.textField}
-              value={formik.values.number_of_frames}
-              onChange={formik.handleChange}
-              helperText={formik.touched.number_of_frames && formik.errors.number_of_frames}
-              error={formik.touched.number_of_frames && Boolean(formik.errors.number_of_frames)}
+              formik={formik}
               InputLabelProps={{
                 shrink: true,
               }}
@@ -269,14 +260,13 @@ export const InspectionForm = () => {
           </Grid>
           <Grid item xs={12} className={classes.field}>
             <TextField
-              id="notes"
+              value="notes"
               label="Notes"
               multiline
               className={classes.notesField}
               rows={4}
-              value={formik.values.notes}
-              onChange={formik.handleChange}
               variant="outlined"
+              formik={formik}
             />
           </Grid>
 

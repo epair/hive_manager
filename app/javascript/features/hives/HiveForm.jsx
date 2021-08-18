@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -16,6 +15,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 import { Button } from '../components/Button'
+import { TextField } from '../components/TextField'
 import { addNewHive } from './hivesSlice'
 import { setAlert } from '../alerts/reducer'
 
@@ -81,14 +81,9 @@ export const HiveForm = () => {
         <Grid className={classes.field} item xs={6}>
           <TextField
             fullWidth
-            variant="outlined"
-            id="name"
-            name="name"
+            value="name"
             label="Name"
-            onChange={formik.handleChange}
-            value={formik.values.name}
-            helperText={formik.touched.name && formik.errors.name}
-            error={formik.touched.name && Boolean(formik.errors.name)}
+            formik={formik}
           />
         </Grid>
         <Grid className={classes.field} item xs={6}>
