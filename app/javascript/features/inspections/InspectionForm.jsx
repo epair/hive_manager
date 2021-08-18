@@ -10,7 +10,6 @@ import Radio from '@material-ui/core/Radio'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import InputLabel from '@material-ui/core/InputLabel'
-import Checkbox from '@material-ui/core/Checkbox';
 
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
@@ -19,6 +18,7 @@ import { useFormik } from 'formik';
 import { useParams } from "react-router-dom";
 import * as yup from 'yup';
 
+import { Checkbox } from '../components/Checkbox';
 import { Button } from '../components/Button';
 import { TextField } from '../components/TextField';
 import { addNewInspection } from './inspectionsSlice'
@@ -187,39 +187,9 @@ export const InspectionForm = () => {
           </Grid>
           <Grid item xs={6} className={classes.field}>
             <FormLabel component="legend">Brood Present?</FormLabel>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  name="egg_brood"
-                  color="primary"
-                  checked={formik.values.egg_brood}
-                  onChange={formik.handleChange}
-                />
-              }
-              label="Eggs"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  name="larvae_brood"
-                  color="primary"
-                  checked={formik.values.larvae_brood}
-                  onChange={formik.handleChange}
-                />
-              }
-              label="Larvae"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  name="capped_brood"
-                  color="primary"
-                  checked={formik.values.capped_brood}
-                  onChange={formik.handleChange}
-                />
-              }
-              label="Capped"
-            />
+            <Checkbox formik={formik} name="egg_brood" label="Eggs"/>
+            <Checkbox formik={formik} name="larvae_brood" label="Larvae"/>
+            <Checkbox formik={formik} name="capped_brood" label="Capped"/>
           </Grid>
           <Grid item xs={6} className={classes.field}>
             <TextField
@@ -235,28 +205,8 @@ export const InspectionForm = () => {
           </Grid>
           <Grid item xs={6} className={classes.field}>
             <FormLabel component="legend">Alerts & Events</FormLabel>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  name="potential_swarm"
-                  color="primary"
-                  checked={formik.values.potential_swarm}
-                  onChange={formik.handleChange}
-                />
-              }
-              label="Potential Swarm"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  name="feeder"
-                  color="primary"
-                  checked={formik.values.feeder}
-                  onChange={formik.handleChange}
-                />
-              }
-              label="Feeder"
-            />
+            <Checkbox formik={formik} name="potential_swarm" label="Potential Swarm"/>
+            <Checkbox formik={formik} name="feeder" label="Feeder"/>
           </Grid>
           <Grid item xs={12} className={classes.field}>
             <TextField
