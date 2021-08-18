@@ -2,11 +2,9 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl'
 import FormLabel from '@material-ui/core/FormLabel'
 import RadioGroup from '@material-ui/core/RadioGroup'
-import Radio from '@material-ui/core/Radio'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import InputLabel from '@material-ui/core/InputLabel'
@@ -19,6 +17,7 @@ import { useParams } from "react-router-dom";
 import * as yup from 'yup';
 
 import { Checkbox } from '../components/Checkbox';
+import { Radio } from '../components/Radio';
 import { Button } from '../components/Button';
 import { TextField } from '../components/TextField';
 import { addNewInspection } from './inspectionsSlice'
@@ -118,16 +117,8 @@ export const InspectionForm = () => {
             >
               <FormLabel component="legend">Condition</FormLabel>
               <RadioGroup row aria-label="position" name="position" defaultValue="top">
-                <FormControlLabel
-                  value="needs_attention"
-                  control={<Radio color="primary" />}
-                  label="Needs Attention"
-                />
-                <FormControlLabel
-                  value="healthy"
-                  control={<Radio color="primary" />}
-                  label="Healthy"
-                />
+                <Radio value="needs_attention" label="Needs Attention" />
+                <Radio value="healthy" label="Healthy" />
               </RadioGroup>
             </FormControl>
           </Grid>
@@ -155,21 +146,9 @@ export const InspectionForm = () => {
             >
               <FormLabel component="legend">Honey Stores</FormLabel>
               <RadioGroup row aria-label="position" name="position" defaultValue="top">
-                <FormControlLabel
-                  value="low"
-                  control={<Radio color="primary" />}
-                  label="Low"
-                />
-                <FormControlLabel
-                  value="moderate"
-                  control={<Radio color="primary" />}
-                  label="Moderate"
-                />
-                <FormControlLabel
-                  value="high"
-                  control={<Radio color="primary" />}
-                  label="High"
-                />
+                <Radio value="low" label="Low" />
+                <Radio value="moderate" label="Moderate" />
+                <Radio value="high" label="High" />
               </RadioGroup>
             </FormControl>
           </Grid>
