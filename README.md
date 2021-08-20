@@ -10,6 +10,9 @@ React/Rails web app for beekeepers to track and manage hives.
 
 [Demo App](https://immense-atoll-78821.herokuapp.com/)
 
+Email: demo@gmail.com</br>
+Password: password
+
 ### To Do List
 
 - [ ] Update hive/show page to show last inspection info
